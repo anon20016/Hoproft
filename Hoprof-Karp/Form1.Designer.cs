@@ -36,6 +36,7 @@
             this.answer = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.size = new System.Windows.Forms.NumericUpDown();
+            this.ls = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.size)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +95,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(318, 138);
+            this.label3.Location = new System.Drawing.Point(320, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(470, 52);
             this.label3.TabIndex = 4;
@@ -105,7 +106,7 @@
             // 
             this.answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.answer.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.answer.Location = new System.Drawing.Point(320, 190);
+            this.answer.Location = new System.Drawing.Point(322, 138);
             this.answer.Name = "answer";
             this.answer.Size = new System.Drawing.Size(468, 79);
             this.answer.TabIndex = 5;
@@ -149,12 +150,24 @@
             0,
             0});
             // 
+            // ls
+            // 
+            this.ls.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ls.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ls.FormattingEnabled = true;
+            this.ls.ItemHeight = 31;
+            this.ls.Location = new System.Drawing.Point(335, 220);
+            this.ls.Name = "ls";
+            this.ls.Size = new System.Drawing.Size(453, 128);
+            this.ls.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ls);
             this.Controls.Add(this.size);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.answer);
@@ -181,6 +194,7 @@
         private System.Windows.Forms.Label answer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown size;
+        private System.Windows.Forms.ListBox ls;
     }
 }
 

@@ -16,7 +16,7 @@ namespace ConsoleApp3
         private static List<int> endings, t, q;
 
 
-        public static int Solve(List<List<int> > g)
+        public static List<Tuple<int, int > > Solve(List<List<int> > g)
         {
             used = new List<bool>(g.Count);
             graph = g;
@@ -53,12 +53,12 @@ namespace ConsoleApp3
                     }
                 }
             }
-            int result = 0;
+            List<Tuple<int, int> > result = new List<Tuple<int, int>>();
             foreach(var i in first)
             {
                 if (matching[i] != null)
                 {
-                    result += 1;
+                    result.Add(new Tuple<int, int>(i + 1, (int)matching[i] + 1));
                 }
             }
             return result;

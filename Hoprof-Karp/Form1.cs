@@ -58,12 +58,18 @@ namespace Hoprof_Karp
             }
             try
             {
-                Controls["answer"].Text = HoproftCarp.Solve(a).ToString();
+                (Controls["ls"] as ListBox).Items.Clear();
+                var res = HoproftCarp.Solve(a);
+                Controls["answer"].Text = res.Count.ToString();
+                foreach (var i in res)
+                {
+                    (Controls["ls"] as ListBox).Items.Add(i.Item1.ToString() + " " + i.Item2.ToString());
+                }
             }
             catch (ArgumentException f)
             {
                 Controls["answer"].Text = "";
-
+                (Controls["ls"] as ListBox).Items.Clear();
                 Controls["Error"].Text = f.Message;
             }
             catch
