@@ -49,8 +49,10 @@ namespace Hoprof_Karp
                     int y = 0;
                     int.TryParse(g.Rows[i].Cells[j].Value.ToString(), out y);
                     if (y != 0) {
-                        a[i].Add(j);
-                        a[j].Add(i);
+                        if (!a[i].Contains(j))
+                            a[i].Add(j);
+                        if (!a[j].Contains(i))
+                            a[j].Add(i);
                     }
                 }
             }

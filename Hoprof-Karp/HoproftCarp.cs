@@ -42,11 +42,14 @@ namespace ConsoleApp3
                 }
                 for (int i = 0; i < endings.Count; i++)
                 {
-                    var d = dfs(endings[i]);
-                    if (d != null)
+                    var w = dfs(endings[i]);
+                    if (w != null)
                     {
-                        matching[d.Item1] = d.Item2;
-                        matching[d.Item2] = d.Item1;
+                        foreach (var d in w)
+                        {
+                            matching[d.Item1] = d.Item2;
+                            matching[d.Item2] = d.Item1;
+                        }
                     }
                 }
             }
@@ -117,7 +120,7 @@ namespace ConsoleApp3
         {
             for (int i = 0; i < N; i++)
             {
-                dist[i] = -1;
+                dist[i] = -100;
             }
             q = new List<int>();
             t = new List<int>();
@@ -138,7 +141,7 @@ namespace ConsoleApp3
                     q.RemoveAt(0);
                     foreach (var u in graph[s])
                     {
-                        if (dist[u] == -1)
+                        if (dist[u] == -100)
                         {
                             dist[u] = dist[s] + 1;
                             if (matching[u] == null)
@@ -161,28 +164,31 @@ namespace ConsoleApp3
                     int p = t[0];
                     t.RemoveAt(0);
                     int pp = (int)matching[p];
-                    dist[p] = dist[p] + 1;
+                    dist[pp] = dist[p] + 1;
                     q.Add(pp);
                 }
             }
             return false;
         }
-    
-        private static Tuple<int, int> dfs(int x)
+
+        private static List<Tuple<int, int>> dfs(int x)
         {
             if (!used[x])
             {
                 used[x] = true;
                 foreach (var i in graph[x])
                 {
-                    if (dist[x] == dist[i] + 1 && !used[i])
+                    if (dist[x] == dist[i] + 1 && !used[i] && dist[i] == 0)
                     {
                         used[i] = true;
-                        return new Tuple<int, int>(i, x);
+                        List<Tuple<int, int>> temp = new List<Tuple<int, int>>();
+                        temp.Add(new Tuple<int, int>(i, x));
+                        return temp;
                     }
                     var r = dfs(i);
                     if (r != null)
                     {
+                        r.Add(new Tuple<int, int>(i, x));
                         return r;
                     }
 
